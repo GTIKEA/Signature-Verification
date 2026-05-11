@@ -1,34 +1,49 @@
-Signature Verification System
+# Signature Verification System
+
 A Flask and Machine Learning based handwritten Signature Verification System developed using Python, OpenCV, Scikit-image, TensorFlow/Keras, and feature extraction techniques.
+
 The application analyzes signature images, extracts geometric and statistical features, and verifies whether a signature is genuine or forged.
-________________________________________
-Project Overview
+
+---
+
+# Project Overview
+
 This project implements an offline signature verification pipeline using image preprocessing and handcrafted feature extraction.
-The system:
-•	Reads signature images
-•	Converts RGB images to grayscale
-•	Performs binary thresholding
-•	Crops signature regions
-•	Extracts signature characteristics
-•	Compares features from genuine and forged signatures
-•	Uses machine learning logic for verification
-•	Provides a Flask-based interface for testing
-________________________________________
-Technologies Used
-Technology	Purpose
-Python	Core programming language
-Flask	Web application framework
-OpenCV	Image processing
-NumPy	Numerical operations
-Pandas	Dataset processing
-Matplotlib	Visualization
-Scikit-image	Feature extraction
-SciPy	Image filtering
-TensorFlow v1	ML backend
-Keras	Neural network utilities
-Jupyter Notebook	Experimentation and training
-________________________________________
-Project Structure
+
+## The system:
+
+- Reads signature images
+- Converts RGB images to grayscale
+- Performs binary thresholding
+- Crops signature regions
+- Extracts signature characteristics
+- Compares features from genuine and forged signatures
+- Uses machine learning logic for verification
+- Provides a Flask-based interface for testing
+
+---
+
+# Technologies Used
+
+| Technology | Purpose |
+|---|---|
+| Python | Core programming language |
+| Flask | Web application framework |
+| OpenCV | Image processing |
+| NumPy | Numerical operations |
+| Pandas | Dataset processing |
+| Matplotlib | Visualization |
+| Scikit-image | Feature extraction |
+| SciPy | Image filtering |
+| TensorFlow v1 | ML backend |
+| Keras | Neural network utilities |
+| Jupyter Notebook | Experimentation and training |
+
+---
+
+# Project Structure
+
+```bash
 Signature-Verification/
 │
 ├── flask_app/
@@ -48,85 +63,169 @@ Signature-Verification/
 ├── main.ipynb
 ├── test.py
 └── README.md
-________________________________________
-Core Functionalities
-1. Image Preprocessing
+```
+
+---
+
+# Core Functionalities
+
+## 1. Image Preprocessing
+
 The system preprocesses signature images using:
-•	RGB to grayscale conversion
-•	Gaussian filtering
-•	Otsu thresholding
-•	Binary image generation
-•	Signature region extraction
-Implemented in:
+
+- RGB to grayscale conversion
+- Gaussian filtering
+- Otsu thresholding
+- Binary image generation
+- Signature region extraction
+
+### Implemented Functions
+
+```python
 rgbgrey()
 greybin()
 preproc()
-________________________________________
-2. Feature Extraction
+```
+
+---
+
+## 2. Feature Extraction
+
 The application extracts multiple handwritten signature characteristics.
-Extracted Features
-Feature	Description
-Ratio	White pixel ratio
-Centroid	Signature center coordinates
-Eccentricity	Shape elongation
-Solidity	Signature density
-Skewness	Distribution asymmetry
-Kurtosis	Distribution sharpness
-Implemented in:
+
+### Extracted Features
+
+| Feature | Description |
+|---|---|
+| Ratio | White pixel ratio |
+| Centroid | Signature center coordinates |
+| Eccentricity | Shape elongation |
+| Solidity | Signature density |
+| Skewness | Distribution asymmetry |
+| Kurtosis | Distribution sharpness |
+
+### Implemented Functions
+
+```python
 Ratio()
 Centroid()
 EccentricitySolidity()
 SkewKurtosis()
 getFeatures()
-________________________________________
-3. Dataset Support
+```
+
+---
+
+## 3. Dataset Support
+
 The repository contains:
-Genuine Signatures
+
+### Genuine Signatures
+
 Stored inside:
+
+```bash
 real/
-Forged Signatures
+```
+
+### Forged Signatures
+
 Stored inside:
+
+```bash
 forged/
+```
+
 The dataset includes multiple signature samples for each user.
-Example:
+
+### Example
+
+```bash
 001001_000.png
 001001_001.png
-________________________________________
-Flask Application
+```
+
+---
+
+# Flask Application
+
 The Flask application provides a lightweight interface for signature verification.
-Main Flask Files
-File	Purpose
-app.py	Main Flask application and ML logic
-controller.py	Handles request routing
-model.py	Form validation
-________________________________________
-Installation Guide
-Clone Repository
+
+## Main Flask Files
+
+| File | Purpose |
+|---|---|
+| app.py | Main Flask application and ML logic |
+| controller.py | Handles request routing |
+| model.py | Form validation |
+
+---
+
+# Installation Guide
+
+## Clone Repository
+
+```bash
 git clone https://github.com/GTIKEA/Signature-Verification.git
 cd Signature-Verification
-________________________________________
-Create Virtual Environment
-Linux / macOS
+```
+
+---
+
+# Create Virtual Environment
+
+## Linux / macOS
+
+```bash
 python3 -m venv venv
 source venv/bin/activate
-Windows
+```
+
+## Windows
+
+```bash
 python -m venv venv
 venv\Scripts\activate
-________________________________________
-Install Dependencies
+```
+
+---
+
+# Install Dependencies
+
+```bash
 pip install flask numpy pandas matplotlib scipy scikit-image opencv-python tensorflow keras wtforms
-________________________________________
-Running the Project
-Run Testing Script
+```
+
+---
+
+# Running the Project
+
+## Run Testing Script
+
+```bash
 python test.py
-________________________________________
-Run Flask Application
+```
+
+---
+
+## Run Flask Application
+
+```bash
 cd flask_app
 python app.py
-Default Flask server:
+```
+
+### Default Flask Server
+
+```bash
 http://127.0.0.1:5000/
-________________________________________
-Machine Learning Workflow
+```
+
+---
+
+# Machine Learning Workflow
+
+```text
 Input Signature
         ↓
 Image Preprocessing
@@ -136,54 +235,89 @@ Feature Extraction
 Feature Comparison
         ↓
 Verification Result
-________________________________________
-Important Implementation Details
-TensorFlow Compatibility
+```
+
+---
+
+# Important Implementation Details
+
+## TensorFlow Compatibility
+
 The project uses:
+
+```python
 tensorflow.compat.v1
+```
+
 and disables TensorFlow v2 behavior:
+
+```python
 tf.disable_v2_behavior()
-________________________________________
-Existing Limitations
-•	Hardcoded dataset paths exist in app.py
-•	No database integration
-•	No Docker support
-•	No authentication system
-•	TensorFlow v1 dependency
-•	Limited frontend implementation
-________________________________________
-Recommended Improvements
-Infrastructure Enhancements
-•	Docker containerization
-•	CI/CD integration
-•	REST API architecture
-•	Cloud deployment
-•	Kubernetes deployment
-ML Enhancements
-•	CNN-based verification
-•	Siamese neural networks
-•	Deep learning embeddings
-•	Improved accuracy benchmarking
-•	Real-time signature comparison
-Security Enhancements
-•	User authentication
-•	Secure file uploads
-•	API validation
-•	Input sanitization
-________________________________________
-Sample Commands
-Git Setup
+```
+
+---
+
+# Existing Limitations
+
+- Hardcoded dataset paths exist in `app.py`
+- No database integration
+- No Docker support
+- No authentication system
+- TensorFlow v1 dependency
+- Limited frontend implementation
+
+---
+
+# Recommended Improvements
+
+## Infrastructure Enhancements
+
+- Docker containerization
+- CI/CD integration
+- REST API architecture
+- Cloud deployment
+- Kubernetes deployment
+
+## ML Enhancements
+
+- CNN-based verification
+- Siamese neural networks
+- Deep learning embeddings
+- Improved accuracy benchmarking
+- Real-time signature comparison
+
+## Security Enhancements
+
+- User authentication
+- Secure file uploads
+- API validation
+- Input sanitization
+
+---
+
+# Sample Commands
+
+## Git Setup
+
+```bash
 git init
 git add .
 git commit -m "Initial commit"
 git branch -M main
 git remote add origin https://github.com/GTIKEA/Signature-Verification.git
 git push -u origin main
-________________________________________
-Author
-Geethika Chowdary Tunga
-Data Analyst
-________________________________________
-License
-This project is intended for educational, research, and academic purposes.
+```
 
+---
+
+# Author
+
+## Geethika Chowdary Tunga
+
+Data Analyst
+
+---
+
+# License
+
+This project is intended for educational, research, and academic purposes.
