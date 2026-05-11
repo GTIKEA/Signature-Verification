@@ -1,0 +1,29 @@
+body{
+  display: flex;
+  padding:0;
+  margin: 0;
+  align-items: center;
+  flex-direction: column;
+}
+
+#app{
+  color: #45096c;
+}
+.my-class {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: #f1f1f1;
+    color: #45096c;
+    padding: 20px;
+    font-weight: bolder;
+    margin-top: 0;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 150px;
+    
+  }
+
+.form-control{
+  border: 1px solid rgb(137, 84, 5);
+  width: 80%;
+  padding: 20px;
+}
